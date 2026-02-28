@@ -9,8 +9,23 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 import android.widget.Toast;
+
+
 public class MainActivity extends AppCompatActivity {
     boolean isXTurn = true;
+    int[] gameState = {2,2,2,2,2,2,2,2,2};
+    boolean gameActive = true;
+    int[][] winningPositions = {
+            {0,1,2},
+            {3,4,5},
+            {6,7,8},
+            {0,3,6},
+            {1,4,7},
+            {2,5,8},
+            {0,4,8},
+            {2,4,6}
+    };
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,23 +47,34 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 TextView clickedCell = (TextView) v;
                 int tappedCell = Integer.parseInt(clickedCell.getTag().toString());
-                if (clickedCell.getText().toString().isEmpty()) {
+                if (gameState[tappedCell] == 2 && gameActive) {
 
                     if (isXTurn) {
                         clickedCell.setText("X");
                         clickedCell.setTextColor(getResources().getColor(android.R.color.holo_red_dark));
+                        gameState[tappedCell] = 0;
                     } else {
                         clickedCell.setText("O");
                         clickedCell.setTextColor(getResources().getColor(android.R.color.holo_blue_dark));
+                        gameState[tappedCell] = 1;
                     }
 
                     clickedCell.setTextSize(120);
 
-                    String player = isXTurn ? "X" : "O";
+                    for (int[] winningPosition : winningPositions) {
 
-                    Toast.makeText(MainActivity.this,
-                            "Cell " + tappedCell + " clicked - " + player,
-                            Toast.LENGTH_SHORT).show();
+                        if (gameState[winningPosition[0]] == gameState[winningPosition[1]] &&
+                                gameState[winningPosition[1]] == gameState[winningPosition[2]] &&
+                                gameState[winningPosition[0]] != 2) {
+
+                            String winner = gameState[winningPosition[0]] == 0 ? "X" : "O";
+
+                            Toast.makeText(MainActivity.this,
+                                    winner + " is the Winner!",
+                                    Toast.LENGTH_LONG).show();
+                            gameActive = false;
+                        }
+                    }
 
                     clickedCell.setTranslationY(-clickedCell.getHeight() * 3);
                     clickedCell.animate()
