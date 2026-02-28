@@ -4,6 +4,13 @@ A simple Grid O-X (Tic Tac Toe) Android application built using Java and XML in 
 
 ---
 
+## ✨ Updates
+- Added Toast to display clicked cell and current player
+- Implemented tag attribute for cell identification
+- Improved click handling logic
+
+---
+
 ## 🛠 Tech Stack
 - Java
 - XML
