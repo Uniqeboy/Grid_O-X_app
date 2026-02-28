@@ -19,8 +19,10 @@ A simple Grid O-X (Tic Tac Toe) Android application built using Java and XML in 
 
 ---
 
-## 📷 Screenshots
+## 📷 Screenshots1
 ![App Screenshot](screenshot1.png)
+
+## 📷 Screenshots2
 ![App Screenshot](screenshot2.png)
 
 
