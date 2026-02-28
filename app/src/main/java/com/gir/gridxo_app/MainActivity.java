@@ -1,5 +1,4 @@
 package com.gir.gridxo_app;
-
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
@@ -9,11 +8,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
-
+import android.widget.Toast;
 public class MainActivity extends AppCompatActivity {
-
     boolean isXTurn = true;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,10 +30,9 @@ public class MainActivity extends AppCompatActivity {
         View.OnClickListener listener = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 TextView clickedCell = (TextView) v;
-
-                if (clickedCell.getText().toString().equals("")) {
+                int tappedCell = Integer.parseInt(clickedCell.getTag().toString());
+                if (clickedCell.getText().toString().isEmpty()) {
 
                     if (isXTurn) {
                         clickedCell.setText("X");
@@ -47,6 +43,12 @@ public class MainActivity extends AppCompatActivity {
                     }
 
                     clickedCell.setTextSize(120);
+
+                    String player = isXTurn ? "X" : "O";
+
+                    Toast.makeText(MainActivity.this,
+                            "Cell " + tappedCell + " clicked - " + player,
+                            Toast.LENGTH_SHORT).show();
 
                     clickedCell.setTranslationY(-clickedCell.getHeight() * 3);
                     clickedCell.animate()

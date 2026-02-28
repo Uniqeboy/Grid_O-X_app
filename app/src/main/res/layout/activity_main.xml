@@ -9,6 +9,7 @@
     <!-- 9 Cells -->
 
     <TextView
+        android:tag="0"
         android:id="@+id/cell1"
         android:layout_width="0dp"
         android:layout_height="0dp"
@@ -21,6 +22,7 @@
         android:layout_margin="2dp"/>
 
     <TextView
+        android:tag="1"
         android:id="@+id/cell2"
         android:layout_width="0dp"
         android:layout_height="0dp"
@@ -33,6 +35,7 @@
         android:layout_margin="2dp"/>
 
     <TextView
+        android:tag="2"
         android:id="@+id/cell3"
         android:layout_width="0dp"
         android:layout_height="0dp"
@@ -45,6 +48,7 @@
         android:layout_margin="2dp"/>
 
     <TextView
+        android:tag="3"
         android:id="@+id/cell4"
         android:layout_width="0dp"
         android:layout_height="0dp"
@@ -57,6 +61,7 @@
         android:layout_margin="2dp"/>
 
     <TextView
+        android:tag="4"
         android:id="@+id/cell5"
         android:layout_width="0dp"
         android:layout_height="0dp"
@@ -69,6 +74,7 @@
         android:layout_margin="2dp"/>
 
     <TextView
+        android:tag="5"
         android:id="@+id/cell6"
         android:layout_width="0dp"
         android:layout_height="0dp"
@@ -81,6 +87,7 @@
         android:layout_margin="2dp"/>
 
     <TextView
+        android:tag="6"
         android:id="@+id/cell7"
         android:layout_width="0dp"
         android:layout_height="0dp"
@@ -93,6 +100,7 @@
         android:layout_margin="2dp"/>
 
     <TextView
+        android:tag="7"
         android:id="@+id/cell8"
         android:layout_width="0dp"
         android:layout_height="0dp"
@@ -105,6 +113,7 @@
         android:layout_margin="2dp"/>
 
     <TextView
+        android:tag="8"
         android:id="@+id/cell9"
         android:layout_width="0dp"
         android:layout_height="0dp"
