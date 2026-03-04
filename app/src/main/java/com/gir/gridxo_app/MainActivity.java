@@ -67,6 +67,10 @@ public class MainActivity extends AppCompatActivity {
                     }
 
                     clickedCell.setTextSize(80);
+                    String player = isXTurn ? "X" : "O";
+                    Toast.makeText(MainActivity.this,
+                            "Cell " + tappedCell + " clicked : " + player,
+                            Toast.LENGTH_SHORT).show();
 
                     for (int[] winningPosition : winningPositions) {
 
@@ -78,7 +82,7 @@ public class MainActivity extends AppCompatActivity {
 
                             Toast.makeText(MainActivity.this,
                                     winner + " is the Winner!",
-                                    Toast.LENGTH_LONG).show();
+                                    Toast.LENGTH_SHORT).show();
                             gameActive = false;
                             restartButton.setVisibility(View.VISIBLE);
                         }
@@ -87,7 +91,7 @@ public class MainActivity extends AppCompatActivity {
                     clickedCell.setTranslationY(-clickedCell.getHeight() * 3);
                     clickedCell.animate()
                             .translationY(0f)
-                            .setDuration(3000)
+                            .setDuration(2000)
                             .setInterpolator(new android.view.animation.BounceInterpolator())
                             .start();
 
