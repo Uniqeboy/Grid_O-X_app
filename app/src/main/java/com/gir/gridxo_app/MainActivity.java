@@ -9,7 +9,8 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 import android.widget.Toast;
-
+import android.widget.Button;
+import android.widget.GridLayout;
 
 public class MainActivity extends AppCompatActivity {
     boolean isXTurn = true;
@@ -26,6 +27,8 @@ public class MainActivity extends AppCompatActivity {
             {2,4,6}
     };
 
+    Button restartButton;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,6 +44,10 @@ public class MainActivity extends AppCompatActivity {
         TextView cell7 = findViewById(R.id.cell7);
         TextView cell8 = findViewById(R.id.cell8);
         TextView cell9 = findViewById(R.id.cell9);
+
+        restartButton = findViewById(R.id.restartButton);
+
+        restartButton.setOnClickListener(v -> restartGame());
 
         View.OnClickListener listener = new View.OnClickListener() {
             @Override
@@ -59,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
                         gameState[tappedCell] = 1;
                     }
 
-                    clickedCell.setTextSize(120);
+                    clickedCell.setTextSize(80);
 
                     for (int[] winningPosition : winningPositions) {
 
@@ -73,6 +80,7 @@ public class MainActivity extends AppCompatActivity {
                                     winner + " is the Winner!",
                                     Toast.LENGTH_LONG).show();
                             gameActive = false;
+                            restartButton.setVisibility(View.VISIBLE);
                         }
                     }
 
@@ -84,6 +92,22 @@ public class MainActivity extends AppCompatActivity {
                             .start();
 
                     isXTurn = !isXTurn;
+
+                    boolean flag = false;
+                    for (int i = 0; i < gameState.length; i++) {
+                        if (gameState[i] == 2) {
+                            flag = true;
+                            break;
+                        }
+                    }
+
+                    if(!flag) {
+                        Toast.makeText(MainActivity.this,
+                                "Game Over!",
+                                Toast.LENGTH_LONG).show();
+                        gameActive = false;
+                        restartButton.setVisibility(View.VISIBLE);
+                    }
                 }
             }
         };
@@ -97,5 +121,24 @@ public class MainActivity extends AppCompatActivity {
         cell7.setOnClickListener(listener);
         cell8.setOnClickListener(listener);
         cell9.setOnClickListener(listener);
+    }
+
+    public void restartGame() {
+
+        GridLayout grid = findViewById(R.id.gameGrid);
+
+        for (int i = 0; i < grid.getChildCount(); i++) {
+            TextView cell = (TextView) grid.getChildAt(i);
+            cell.setText("");
+        }
+
+        for (int i = 0; i < gameState.length; i++) {
+            gameState[i] = 2;
+        }
+
+        isXTurn = true;
+        gameActive = true;
+
+        restartButton.setVisibility(View.GONE);
     }
 }
