@@ -4,15 +4,15 @@ A simple Grid O-X (Tic Tac Toe) Android application built using Java and XML in 
 
 ---
 
-## ✨ Toast Implemented
+## ✨ Interaction Features
 - Added Toast to display clicked cell and current player
 - Implemented tag attribute for cell identification
 - Improved click handling logic
 
 ---
 
-## ✨ Features
-- 3×3 GridLayout Tic Tac Toe board
+## Features
+- 3×3 Tic Tac Toe board
 - Alternating X and O turns
 - Falling animation for moves
 - Winner detection (rows, columns, diagonals)
@@ -25,7 +25,8 @@ A simple Grid O-X (Tic Tac Toe) Android application built using Java and XML in 
 - Java
 - XML
 - Android Studio
-- ConstraintLayout
+- GridLayout
+- LinearLayout
 
 ---
 
